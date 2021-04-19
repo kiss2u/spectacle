@@ -17,6 +17,5 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-# CocoaPods
-#
-Pods/
+Carthage/Build
+Carthage/Checkouts

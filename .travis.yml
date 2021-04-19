@@ -1,12 +1,12 @@
+osx_image: xcode8.2
 language: objective-c
-xcode_workspace: Spectacle.xcworkspace
+xcode_project: Spectacle.xcodeproj
 xcode_scheme: Spectacle
 
 before_install:
-  - gem install cocoapods -v '0.37.0.beta.1'
-
-before_script:
-  - export LANG=en_US.UTF-8
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - carthage bootstrap --platform Mac
 
 script:
-  - xctool -workspace Spectacle.xcworkspace -scheme Spectacle test
+  - set -o pipefail && xcodebuild -project Spectacle.xcodeproj -scheme Spectacle test | xcpretty
